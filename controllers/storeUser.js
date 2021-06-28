@@ -10,6 +10,7 @@ module.exports = (req, res) => {
     user.password = req.body.password;
     user.save((err, user) => {
         if(err){
+            req.session.userId = user._id;
             return res.redirect('/users/register');
         } 
 
